@@ -1,80 +1,80 @@
-# Mobile Tag & Asset Inspector
+```markdown
+# 🏭 Mobile Tag & Asset Inspector
 
-A Progressive Web App (PWA) that lets an Aveva PI System Engineer check PI tag
-snapshot values, data quality, 12-hour trend sparklines, and Asset Framework
-(AF) structures from a phone in the field — without opening PI System
-Explorer, and even with poor plant Wi-Fi.
+[![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20Vite%20%7C%20Tailwind-blue?style=for-the-badge)](#)
+[![PWA Ready](https://img.shields.io/badge/PWA-Optimized-brightgreen?style=for-the-badge)](#)
 
-## Stack
+A lightweight, mobile-first Progressive Web App (PWA) engineered for Aveva PI System Engineers. Monitor live PI tag snapshots, data quality, 12-hour sparkline trends, and Asset Framework (AF) structures directly from the plant floor—without opening PI System Explorer, even on degraded Wi-Fi networks.
 
-- React 18 + Vite
-- Tailwind CSS (dark, industrial HMI-inspired theme)
-- Recharts (sparklines)
-- `vite-plugin-pwa` (offline caching, installable app)
-- Mock PI Web API layer (`src/services/piApiService.js`)
+---
 
-## Local development
+## ⚡ Core Tech Stack
+
+*   **React 18 + Vite:** Fast, modern front-end architecture.
+*   **Tailwind CSS:** Custom dark, high-contrast industrial HMI theme to reduce eye strain.
+*   **Recharts:** Lightweight SVG sparklines for rapid visual trend analysis.
+*   **Vite PWA Plugin:** Aggressive offline caching and mobile home-screen installability.
+*   **Data Layer:** Pre-configured mock PI Web API service (`src/services/piApiService.js`).
+
+## 🚀 Quick Start (Local Development)
+
+The application defaults to a deterministic mock data layer, allowing it to compile and run instantly without requiring a live PI server connection.
 
 ```bash
+# 1. Install dependencies
 npm install
-cp .env.example .env   # optional — mock API is on by default
+
+# 2. Set up environment (optional: mock API is enabled by default)
+cp .env.example .env
+
+# 3. Start the Vite dev server
 npm run dev
-```
-
-## Connecting to a real PI Web API
-
-Everything currently runs against a deterministic mock data layer so the demo
-works standalone on GitHub Pages. To point it at a real PI Web API instance:
-
-1. Set `VITE_USE_MOCK_API=false` in `.env`.
-2. Fill in `VITE_PI_WEB_API_BASE_URL`, `VITE_PI_DATA_ARCHIVE`, and
-   `VITE_PI_ASSET_SERVER` (see `.env.example`).
-3. Replace the bodies of the functions in `src/services/piApiService.js` with
-   real `fetch` calls — each function's JSDoc comment already lists the exact
-   PI Web API endpoint it simulates.
-
-## Deploying to GitHub Pages
-
-This repo ships with `.github/workflows/deploy.yml`, which builds the app and
-publishes `dist/` to GitHub Pages automatically on every push to `main`.
-
-One-time setup after pushing this repo to GitHub:
-
-1. Go to **Settings → Pages** and set **Source** to **GitHub Actions**.
-2. Confirm the repository name matches the `base` in `vite.config.js`
-   (`/Mobile-Tag-Asset-Inspector/`). If you rename the repo, update `base`
-   there and the absolute paths in `index.html` to match, or assets will 404.
-3. Push to `main` — the "Deploy to GitHub Pages" workflow will build and
-   deploy automatically. Check the **Actions** tab for progress.
-
-Your app will be live at:
-`https://<your-username>.github.io/Mobile-Tag-Asset-Inspector/`
-
-### Before going live
-
-Update the placeholder `YOUR_GITHUB_USERNAME` URLs in `index.html`
-(canonical link, Open Graph, Twitter Card, JSON-LD) to your actual GitHub
-Pages URL so social previews and search engines resolve correctly.
-
-## Project structure
 
 ```
+
+## 🔌 Connecting to a Live PI Web API
+
+To transition from the standalone demo to your actual operational data:
+
+1. **Configure Environment:** Open `.env` and set `VITE_USE_MOCK_API=false`.
+2. **Define Endpoints:** Input your `VITE_PI_WEB_API_BASE_URL`, `VITE_PI_DATA_ARCHIVE`, and `VITE_PI_ASSET_SERVER` parameters (reference `.env.example`).
+3. **Implement Fetch:** Open `src/services/piApiService.js`. Replace the mock function bodies with standard `fetch` requests. *Note: Each function's JSDoc comment specifies the exact PI Web API REST endpoint it is designed to hit.*
+
+## 🌍 Deploying to GitHub Pages
+
+This repository includes a pre-configured GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically builds and deploys the `dist/` directory on every push to `main`.
+
+**One-Time Repository Setup:**
+
+1. Navigate to **Settings → Pages** in your GitHub repository.
+2. Set the **Source** dropdown to **GitHub Actions**.
+3. **Critical Path Check:** Ensure your repository name matches the `base` property in `vite.config.js` (currently set to `/Mobile-Tag-Asset-Inspector/`). If you rename the repo, update this file and the absolute asset paths in `index.html` to prevent 404 errors.
+4. **Pre-Flight SEO Check:** Before going live, update the `YOUR_GITHUB_USERNAME` placeholders inside `index.html` (Canonical URL, Open Graph, Twitter Cards, JSON-LD) to ensure rich social previews render correctly in chat apps and search engines.
+
+## 📂 Architecture Overview
+
+```text
 .
-├── .github/workflows/deploy.yml   # CI/CD to GitHub Pages
-├── public/                        # PWA icons, favicon, social preview image
+├── .github/workflows/deploy.yml   # CI/CD pipeline for GitHub Pages
+├── public/                        # Static assets, PWA manifest icons, OG preview images
 ├── src/
 │   ├── components/
-│   │   ├── SearchBar.jsx
-│   │   ├── TagDashboard.jsx       # snapshot + quality + sparkline cards
-│   │   ├── Sparkline.jsx          # Recharts trend line
-│   │   └── AFCards.jsx            # swipeable AF hierarchy cards
-│   ├── services/piApiService.js   # mock PI Web API layer
+│   │   ├── SearchBar.jsx          # Tag/AF element lookup
+│   │   ├── TagDashboard.jsx       # Real-time snapshot & quality badge cards
+│   │   ├── Sparkline.jsx          # Recharts 12h trend rendering
+│   │   └── AFCards.jsx            # Horizontally swipeable AF hierarchy layout
+│   ├── services/piApiService.js   # API abstraction layer (Mock & Live fetch)
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
-├── index.html                     # SEO / OG / Twitter / JSON-LD metadata
-├── tailwind.config.js
+├── index.html                     # Entry point with complete SEO/Social metadata
+├── tailwind.config.js             # Industrial UI color palette definition
 ├── postcss.config.js
-├── vite.config.js                 # vite-plugin-pwa + GitHub Pages base path
-└── .env.example
+├── vite.config.js                 # PWA generation & base path routing
+└── .env.example                   # API configuration template
+
+```
+
+```
+
 ```
