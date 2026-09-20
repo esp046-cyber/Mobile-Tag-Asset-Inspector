@@ -1,4 +1,4 @@
-```markdown
+
 <div align="center">
   <h1>🏭 Mobile Tag & Asset Inspector</h1>
   <p><strong>A mobile-first Progressive Web App (PWA) engineered for Aveva PI System Engineers.</strong></p>
@@ -78,5 +78,9 @@ This repository includes a CI/CD workflow (`.github/workflows/deploy.yml`) to au
 ├── postcss.config.js
 ├── vite.config.js                 # PWA generation & base path routing
 └── .env.example                   # API configuration template
+
+```
+
+```
 
 ```
