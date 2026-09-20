@@ -1,8 +1,8 @@
-```markdown
-# 🏭 Mobile Tag & Asset Inspector
+ `# 🏭 Mobile Tag...`):
 
-[![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20Vite%20%7C%20Tailwind-blue?style=for-the-badge)](#)
-[![PWA Ready](https://img.shields.io/badge/PWA-Optimized-brightgreen?style=for-the-badge)](#)
+---
+
+# 🏭 Mobile Tag & Asset Inspector
 
 A lightweight, mobile-first Progressive Web App (PWA) engineered for Aveva PI System Engineers. Monitor live PI tag snapshots, data quality, 12-hour sparkline trends, and Asset Framework (AF) structures directly from the plant floor—without opening PI System Explorer, even on degraded Wi-Fi networks.
 
@@ -10,11 +10,11 @@ A lightweight, mobile-first Progressive Web App (PWA) engineered for Aveva PI Sy
 
 ## ⚡ Core Tech Stack
 
-*   **React 18 + Vite:** Fast, modern front-end architecture.
-*   **Tailwind CSS:** Custom dark, high-contrast industrial HMI theme to reduce eye strain.
-*   **Recharts:** Lightweight SVG sparklines for rapid visual trend analysis.
-*   **Vite PWA Plugin:** Aggressive offline caching and mobile home-screen installability.
-*   **Data Layer:** Pre-configured mock PI Web API service (`src/services/piApiService.js`).
+* **React 18 + Vite:** Fast, modern front-end architecture.
+* **Tailwind CSS:** Custom dark, high-contrast industrial HMI theme to reduce eye strain.
+* **Recharts:** Lightweight SVG sparklines for rapid visual trend analysis.
+* **Vite PWA Plugin:** Aggressive offline caching and mobile home-screen installability.
+* **Data Layer:** Pre-configured mock PI Web API service (`src/services/piApiService.js`).
 
 ## 🚀 Quick Start (Local Development)
 
@@ -72,9 +72,5 @@ This repository includes a pre-configured GitHub Actions workflow (`.github/work
 ├── postcss.config.js
 ├── vite.config.js                 # PWA generation & base path routing
 └── .env.example                   # API configuration template
-
-```
-
-```
 
 ```
